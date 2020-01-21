@@ -1,0 +1,2 @@
+<img *ngIf="dataUrl" [src]="dataUrl" class="profile-image">
+<input type='file' accept="image/*" (change)="readUrl(fileInput.files)" #fileInput>

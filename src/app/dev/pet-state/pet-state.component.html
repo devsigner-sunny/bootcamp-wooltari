@@ -1,0 +1,81 @@
+<h1>Pet State</h1>
+
+<div class="container">
+
+  <div class="boxes-wrap">
+    <ul class="box1-style mb30">
+      <li class="bx-grey2 bx-size1">
+        <div class="bx-content">
+          <span class="peti-number">15kg</span> / <span class="peti-number">10kg</span>
+          <!-- <span class="peti-number">{{ res.currentWeight }}</span> / <span class="peti-number">{{ res.goalWeight }}</span> -->
+          <p>현재 15kg, 목표 10kg [pet nickname] needs to lose</p>
+          <!-- <p>current {{ res.currnetWeight }}kg, goal {{ res.goalWeight }}kg {{}} needs to lose</p> -->
+          <p><em class="highlight">5kg</em> more!</p>
+        </div>
+      </li>
+      <li class="bx-white bx-size2">
+        <h3>Normal Weight</h3>
+        <div class="bx-content">
+          컨텐츠
+        </div>
+      </li>
+    </ul>
+
+    <div class="box-graph mb30">
+      <div class="bx-content">
+        Graph
+      </div>
+    </div>
+
+    <ul class="box1-style mb30">
+      <li class="bx-grey2 bx-size3">
+        <h3><span class="title">Neck Size</span></h3>
+        <div class="bx-content">
+          <p class="peti-number">15</p>
+          <!-- <p class="peti-number">{{ res.necksize }}</p> -->
+          <span class="peti-unit">cm</span>
+        </div>
+      </li>
+      <li class="bx-grey2 bx-size3">
+        <h3><span class="title">Chest Size</span></h3>
+        <div class="bx-content">
+          <p class="peti-number">15</p>
+          <!-- <p class="peti-number">{{ res.chestsize }}</p> -->
+          <span class="peti-unit">cm</span>
+        </div>
+      </li>
+      <li class="bx-white bx-size4">
+        <div class="bx-content">
+          <form [formGroup]="stateForm" (ngSubmit)="editState()" novalidate>
+            <div class="form-container-wrap">
+
+              <div class="form-container input-current-weight">
+                <label for="currentweight" class="elem-title">Current Weight: </label>
+                <span class="elem-input"><input type="text" id="currentweight" name="currentweight" class="form-control" formControlName="currentWeight"></span> kg
+              </div>
+
+              <div class="form-container input-goal-weight">
+                <label for="goalweight" class="elem-title">Goal Weight: </label>
+                <span class="elem-input"><input type="text" id="goalweight" name="goalweight" class="form-control" formControlName="goalWeight"></span> kg
+              </div>
+
+              <div class="form-container input-neck-size">
+                <label for="necksize" class="elem-title">Neck Size: </label>
+                <span class="elem-input"><input type="text" id="necksize" name="necksize" class="form-control" formControlName="neckSize"></span> cm
+              </div>
+
+              <div class="form-container input-chest-size">
+                <label for="chestsize" class="elem-title">Chest Size: </label>
+                <span class="elem-input"><input type="text" id="chestsize" name="chestsize" class="form-control" formControlName="chestSize"></span> cm
+              </div>
+
+              <div class="btn-set-wrapper">
+                <button type="submit" class="btn btn-radius btn-outline-mint btn-type1-mint" [disabled]="stateForm.invalid">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

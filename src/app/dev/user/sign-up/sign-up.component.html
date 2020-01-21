@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="edit-user-profile">
+    <div class="content-wrap">
+      <h1 class="content-header">Sign Up</h1>
+      <div class="content-body">
+        <form [formGroup]="userForm" (ngSubmit)="signup(fileInput.files)" novalidate>
+
+          <div class="form-label">
+            <img *ngIf="dataUrl" [src]="dataUrl" class="profile-image">
+            <input type='file' class="btn-image" accept="image/*" (change)="readUrl(fileInput.files)" #fileInput>
+          </div>
+
+          <!-- 유저 이메일 입력창 시작 -->
+          <div class="form-label">
+            <label for="email">Email</label>
+            <input type="email" name="useremail" id="email" class="form-control" formControlName="userEmail" placeholder="Wootari@gmail.com">
+            <span *ngIf="userEmail.errors?.required && userEmail.touched" class="info">
+              Enter your email!
+            </span>
+            <span *ngIf="userEmail.errors?.pattern && userEmail.touched" class="info">
+              Right email please.
+            </span>
+          </div>
+          <!-- 유저 이메일 입력창 끝 -->
+
+          <!-- 유저네임 입력창 시작 -->
+          <div class="form-label">
+            <label for="nickname">Nickname</label>
+            <input type="text" name="username" id="nickname" class="form-control" formControlName="userName" placeholder="Write your name">
+            <span *ngIf="userName.errors?.required && userName.touched" class="info">
+              Enter your Nickname!
+            </span>
+          </div>
+          <!-- 유저네임 입력창 끝 -->
+
+          <!-- 유저 비밀번호 입력 그룹 시작 -->
+          <div formGroupName="passwordGroup">
+            <!-- 유저 비밀번호 입력창 시작 -->
+            <div class="form-label">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Enter Password">
+              <span *ngIf="password.errors?.required && password.touched" class="info">
+                Enter your password!
+              </span>
+              <span *ngIf="password.errors?.pattern && password.touched" class="info">
+                your password must be at least 8 characters(maxium 16 characters)
+              </span>
+            </div>
+            <!-- 유저 비밀번호 입력창 끝 -->
+
+            <!-- 유저 비밀번호 확인 입력창 시작 -->
+            <div class="form-label">
+              <label for="confirm_password">Confirm Password</label>
+              <input type="password" name="confirmPassword" id="confirm_password" class="form-control" formControlName="confirmPassword"
+                placeholder="Confirm Password">
+              <span *ngIf="confirmPassword.errors?.required && confirmPassword.touched" class="info">
+                Enter your password!
+              </span>
+              <span *ngIf="passwordGroup.errors?.match && confirmPassword.touched && !confirmPassword.error?.required" class="info">
+                Match your password!
+              </span>
+            </div>
+            <!-- 유저 비밀번호 확인 입력창 끝 -->
+          </div>
+          <!-- 유저 비밀번호 입력 그룹 끝 -->
+
+          <!-- 버튼 시작 -->
+          <div class="form-submit">
+            <input type="submit" value="Save" class="form-control submit-btn" [disabled]="userForm.invalid">
+          </div>
+          <!-- 버튼 끝 -->
+          <div *ngIf="isError" class="alert alert-danger">{{ message }}</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

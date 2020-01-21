@@ -1,0 +1,10 @@
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './normalize.scss';
+@import './reset.scss';
+@import './base.scss';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './card.scss';
+
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";

@@ -1,0 +1,78 @@
+<!--nav-->
+<nav>
+  <!--nav-wrapper-->
+  <div class="nav-wrapper">
+    <!--logo-->
+    <div class="logo">
+      <h2>
+        <img class="logo-image" src="../../../../assets/img/logo-dog.png" alt="Wooltari's logo">
+      </h2>
+    </div>
+    <!--logo-->
+    <!--nav-menu-->
+    <div class="nav-menu nav-user">
+      <a [routerLink]="['/profile']"
+         [routerLinkActive]="['router-link-active']"
+         [routerLinkActiveOptions]="{ exact: true }"
+         matTooltip="user"
+         [matTooltipPosition]="position">
+        <i class="fa fa-user fa-2x" 
+           aria-hidden="true"></i>
+        <span>User</span>
+        <!--<i  [name]="'user-circle-o'" [size]="iconSize"></i>-->
+      </a>
+    </div>
+    <!--nav-menu-->
+    <div class="nav-menu nav-add-pet">
+      <a [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" matTooltip="Add pet" [matTooltipPosition]="position">
+        <i class="fa fa-plus-circle fa-2x"></i>
+        <!--fa [name]="'plus-circle'" [size]="iconSize"></i>
+        --><span>Add Pet</span>
+      </a>
+    </div>
+    <!--nav-menu-->
+    <!--nav-menu-->
+    <div class="nav-menu nav-user">
+      <a [routerLink]="['/hospital']" [routerLinkActive]="['router-link-active']" matTooltip="Hospital" [matTooltipPosition]="position">
+        <i class="fa fa-hospital-o fa-2x"></i>
+        <!-- <i  fa [name]="'hospital-o'" [size]="iconSize" class ="fa-2x"></i>-->
+        <span>병원</span>
+      </a>
+    </div>
+    <!--nav-menu-->
+    <div class="nav-menu nav-pet">
+      <!--pets pet-->
+      <h3>PET</h3>
+      <ul class="menu nav-pet-list">
+        <!--<li class="pet"
+            *ngFor="let petList of petLists">
+          <a [routerLink]="['/dashboard']"
+             [routerLinkActive]="['router-link-active']"
+             matTooltip="{{petList.pet.name}}"
+             [matTooltipPosition]="position">
+            <img src="../../../../assets/img/default.png">
+             <i  fa [name]="'hospital-o'" [size]="iconSize" class ="fa-2x"></i>-->
+            <!--<span>pet.name</span>-->
+          <!--</a>-->
+        <li
+          class="pet"
+          *ngFor="let petList of petLists"
+        >
+        <a
+          (click)="gotoDashboard(petList.pet.pk)"
+          [routerLinkActive]="['router-link-active']"
+          matTooltip="{{petList.pet.name}}"
+          [matTooltipPosition]="position"
+        >
+        <img src="{{petList.pet.image}}">
+        <!-- <i  fa [name]="'hospital-o'" [size]="iconSize" class ="fa-2x"></i>-->
+        <!--<span>pet.name</span>-->
+        </a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <input type="submit" value="Logout" class="form-control submit-btn" (click)="signout()">
+    </div>
+  </div>
+</nav>
